@@ -491,7 +491,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 96.0635, y: 36.96, z: 67.187}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -636,6 +636,7 @@ MonoBehaviour:
   PtsFile: {fileID: 4900000, guid: 51724dcb94747c74f94d90cd2bce88ce, type: 3}
   PointRadius: 5
   PointSize: 100
+  ModelScale: 1
 --- !u!1 &1828601335
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,8 +9,9 @@ public class PointCloudLoader : MonoBehaviour
     [SerializeField] Camera Camera;
     [SerializeField] Shader PointCloudShader;
     [SerializeField] TextAsset PtsFile;
-    [Range(0, 10)] public float PointRadius = 5;
-    [Range(0, 100)] public float PointSize = 100;
+    [Range(0, 10)] public float PointRadius = 5f;
+    [Range(0, 100)] public float PointSize = 100f;
+    [Range(0, 100)] public float ModelScale = 100f;
 
     private ComputeBuffer posbuffer;
     private ComputeBuffer colbuffer;
@@ -29,7 +30,7 @@ public class PointCloudLoader : MonoBehaviour
         if (pts == null)
         {
             Debug.Log($"Start Load");
-            pts = await PtsReader.Load(PtsFile);
+            pts = await PtsReader.Load(PtsFile, ModelScale);
             Debug.Log($"Point Count: [{pts.Count}]");
         }
 
@@ -55,8 +56,8 @@ public class PointCloudLoader : MonoBehaviour
 
         float maxLength = Mathf.Max(maxVector.x - minVector.x, maxVector.y - minVector.y, maxVector.z - minVector.z);
         Vector3 centerPos = (maxVector + minVector) / 2.0f;
-        centerPos.y = minVector.y + 20.0f;
-        Camera.transform.SetPositionAndRotation(centerPos, Quaternion.Euler(0.0f, 0.0f, 0.0f));
+        centerPos.y = maxVector.y * 2.0f;
+        Camera.transform.SetPositionAndRotation(centerPos, Quaternion.Euler(90.0f, 0.0f, 0.0f));
         //centerPos.y += maxLength;
         //Camera.transform.SetPositionAndRotation(centerPos, Quaternion.Euler(90.0f, 0.0f, 0.0f));
 
